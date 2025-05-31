@@ -12,7 +12,7 @@ on:
 
 jobs:
   claude:
-    if:
+    if: >
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
@@ -35,7 +35,7 @@ jobs:
         with:
           # Option 1: Use Anthropic API key (commented out for OAuth)
           # anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          
+
           # Option 2: Use OAuth for Claude Max subscribers (ACTIVE)
           use_oauth: "true"
           claude_access_token: ${{ secrets.CLAUDE_ACCESS_TOKEN }}
